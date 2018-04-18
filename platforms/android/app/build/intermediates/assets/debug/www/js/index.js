@@ -1,4 +1,21 @@
-
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 var app = {
     // Application Constructor
     initialize: function() {
@@ -27,62 +44,3 @@ var app = {
 };
 
 app.initialize();
-
-document.getElementById("alerta").addEventListener("click", alerta, false);
-document.getElementById("confirmacao").addEventListener("click", confirmacao, false);
-document.getElementById("PromptEndereco").addEventListener("click", PromptEndereco, false);
-document.getElementById("AlertaSom").addEventListener("click", AlertaSom, false);
-document.getElementById("Vibrar").addEventListener("click", Vibrar, false);
-
-
-function alerta() {
-    navigator.notification.alert(
-        'Mensagem do alerta!',
-        function(){},
-        'Título do alerta',
-        'Fechar'
-    );
-}
-
-
-function confirmacao() {
-    navigator.notification.confirm(
-        'Deseja executar a ação?',
-         RespostaSim,
-        'Pergunta',
-        ['Sim','Não', 'Talvez']
-    );
-}
-
-function RespostaSim(botao){
-    if (botao == 1)
-    navigator.notification.alert('Ação executada!', function(){}, 'Sucesso', 'Fechar');
-}
-
-function PromptEndereco() {
-  navigator.notification.prompt(
-      'Digite seu endereço',
-      onPrompPress,
-      'Endereço',
-      ['Ok','Cancelar'],
-      'Av. Paulista - 100'
-  );
-}
-
-function onPrompPress(resultado) {
-    navigator.notification.alert(
-        "Você apertou o botão com índice " + resultado.buttonIndex + " você digitou " + resultado.input1,
-        function(){},
-        'Confirmação Prompt',
-        'Fechar'
-    );
-}
-
-function AlertaSom() {
-    navigator.notification.beep(3);
-}
-
-
-function Vibrar() {
-    navigator.vibrate(2000);
-}
